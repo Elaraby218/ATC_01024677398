@@ -1,54 +1,65 @@
-# React + TypeScript + Vite
+# Event Reservation System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack application for managing event reservations, built with modern web technologies. This system allows users to browse events, make reservations, and manage their bookings, while administrators can handle event management and user oversight.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Event Reservation System is designed to provide a seamless experience for both event organizers and attendees. It features:
 
-## Expanding the ESLint configuration
+- User authentication and authorization
+- Event browsing and filtering
+- Booking management
+- Admin dashboard
+- Real-time availability updates
+- Category-based event organization
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Structure
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+The project is organized into two main directories:
+
+```
+event-reservation/
+├── Back-end/          # Node.js, Express, TypeScript backend
+│   └── README.md     # Detailed backend documentation
+└── Front-end/        # React frontend (coming soon)
+    └── README.md     # Detailed frontend documentation
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Key Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### For Users
+- Browse upcoming events
+- Filter events by category
+- Book tickets for events
+- View booking history
+- Manage personal profile
+- Cancel bookings
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### For Administrators
+- Create and manage events
+- Monitor bookings
+- Toggle event availability
+
+## Technology Stack
+
+### Backend
+- Node.js
+- Express.js
+- TypeScript
+- PostgreSQL
+- Prisma ORM
+- JWT Authentication
+
+### Frontend (Coming Soon)
+- React
+- TypeScript
+- Tailwind Css
+- Redux Toolkit
+
+
+## Documentation
+
+For detailed documentation, please refer to:
+
+- [Backend Documentation](Back-end/README.md) - Complete API documentation, database schema, and setup instructions
+- [Frontend Documentation](Front-end/README.md) - Component documentation and setup guide (coming soon)
