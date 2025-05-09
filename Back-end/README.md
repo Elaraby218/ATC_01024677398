@@ -158,27 +158,101 @@ Request Body:
 POST /api/auth/logout
 ```
 
-### Event Endpoints
+### Events
 
-#### Public Endpoints
-
-##### Get All Events
+#### Get All Events (Public)
 ```http
 GET /api/events
 ```
-Query Parameters:
-- `page` (optional): Page number (default: 1)
-- `limit` (optional): Items per page (default: 10)
-- `category` (optional): Filter by event category
 
-##### Get Upcoming Events
-```http
-GET /api/events/upcoming
-```
 Query Parameters:
-- `page` (optional): Page number (default: 1)
-- `limit` (optional): Items per page (default: 10)
-- `category` (optional): Filter by event category
+- `page` (optional): Page number for pagination (default: 1)
+- `limit` (optional): Number of items per page (default: 10)
+- `category` (optional): Filter events by category
+
+Response:
+```json
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "Summer Concert",
+      "description": "Annual summer music festival",
+      "category": "Music",
+      "date": "2024-07-15T18:00:00Z",
+      "venue": "Central Park",
+      "price": 50.00,
+      "image": "concert.jpg",
+      "isOpen": true,
+      "quantity": 100
+    }
+  ],
+  "pagination": {
+    "total": 50,
+    "page": 1,
+    "limit": 10,
+    "totalPages": 5
+  }
+}
+```
+
+#### Get All Events (Admin)
+```http
+GET /api/events
+```
+
+Headers:
+- `Authorization`: Bearer token (required)
+- User must have admin role
+
+Query Parameters:
+- `page` (optional): Page number for pagination (default: 1)
+- `limit` (optional): Number of items per page (default: 10)
+- `category` (optional): Filter events by category
+
+Response:
+```json
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "Summer Concert",
+      "description": "Annual summer music festival",
+      "category": "Music",
+      "date": "2024-07-15T18:00:00Z",
+      "venue": "Central Park",
+      "price": 50.00,
+      "image": "concert.jpg",
+      "isOpen": true,
+      "quantity": 100,
+      "bookings": [
+        {
+          "id": 1,
+          "quantity": 2,
+          "bookingDate": "2024-03-10T14:30:00Z",
+          "user": {
+            "id": 1,
+            "userName": "john_doe",
+            "firstName": "John",
+            "lastName": "Doe",
+            "email": "john@example.com"
+          }
+        }
+      ]
+    }
+  ],
+  "pagination": {
+    "total": 50,
+    "page": 1,
+    "limit": 10,
+    "totalPages": 5
+  }
+}
+```
+
+### Event Endpoints
+
+#### Public Endpoints
 
 ##### Get All Categories
 ```http
